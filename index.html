@@ -151,7 +151,10 @@
 
             <div id="git-setup" class="content-section">
                 <h2>Git初期設定</h2>
-                <p>Gitを使用する前に、ユーザー情報の設定が必要です。特にGitHubを使用する場合は、プライバシーを保護するためにnoreplyアドレスの使用を推奨します。</p>
+                <p>Gitを使用する前に、ユーザー情報の設定が必要です。以下の手順では、プライバシーの保護を目的として、GitHubでnoreplyのメールアドレスを取得する方法を説明しますが、<strong>これは就職・転職活動で技術をアピールしたり、個人でゲームなどを制作・公開する際の手順</strong>です。</p>
+                <div class="info-box">
+                    <p><strong>重要:</strong> 授業で使用するメールアドレスについては、Step4で詳しく説明します。</p>
+                </div>
                 
                 <div class="step-card">
                     <h3>Step 1: GitHubのプロフィールメニューにアクセス</h3>
@@ -188,6 +191,9 @@
 
                 <div class="step-card">
                     <h3>Step 4: SourceTreeでのユーザー情報設定</h3>
+                    <div class="warning-box">
+                        <p><strong>⚠️ 学校での授業について:</strong> 授業を通してのプログラミング時には、学校から与えられたメールアドレスを使用してください。上記のnoreplyアドレスは、あくまでも個人制作用です。</p>
+                    </div>
                     <p>SourceTreeを開き、メニューバーから「ツール」→「オプション」を選択します。</p>
                     <div class="image-container">
                         <img src="images/sourcetree-menu.png" alt="SourceTreeメニュー" class="step-image">
@@ -200,7 +206,7 @@
                         <p><strong>設定内容:</strong></p>
                         <ul>
                             <li><strong>作者の名前:</strong> GitHubのユーザー名または実名</li>
-                            <li><strong>作者のメールアドレス:</strong> Step 3で確認したnoreplyアドレス</li>
+                            <li><strong>作者のメールアドレス:</strong> 学校から与えられたメールアドレス（個人制作においてはStep 3で取得したnoreplyアドレス）</li>
                         </ul>
                     </div>
                     <div class="warning-box">
@@ -267,6 +273,18 @@ git config --global user.email</code></pre>
             if (activeLink) {
                 activeLink.parentElement.classList.add('active');
             }
+
+            // スクロールリセットを少し遅延して実行
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                const contentArea = document.querySelector('.content');
+                if (contentArea) {
+                    contentArea.scrollTop = 0;
+                }
+                // bodyのスクロールもリセット
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }, 10);
         }
     </script>
 </body>
