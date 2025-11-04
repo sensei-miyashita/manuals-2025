@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開発ツールマニュアル</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>開発ツールマニュアル</h1>
+            <p>開発に必要なツールのインストールと設定方法をご紹介します</p>
+        </header>
+
+        <nav class="sidebar">
+            <ul class="menu">
+                <li class="menu-item active">
+                    <a href="#sourcetree-install" onclick="showContent('sourcetree-install')">
+                        <span class="menu-icon">🌳</span>
+                        WindowsにSourceTreeをインストール
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#git-setup" onclick="showContent('git-setup')">
+                        <span class="menu-icon">⚙️</span>
+                        Git初期設定
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#repository-clone" onclick="showContent('repository-clone')">
+                        <span class="menu-icon">📥</span>
+                        リポジトリのクローン
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#branch-management" onclick="showContent('branch-management')">
+                        <span class="menu-icon">🌿</span>
+                        ブランチ管理
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div id="sourcetree-install" class="content-section active">
+                <h2>WindowsにSourceTreeをインストールする手順</h2>
+                
+                <div class="step-card">
+                    <h3>Step 1: SourceTreeの公式サイトにアクセス</h3>
+                    <p>Atlassianの公式サイトからSourceTreeをダウンロードします。</p>
+                    <div class="highlight-box">
+                        <p><strong>URL:</strong> <a href="https://www.sourcetreeapp.com/" target="_blank">https://www.sourcetreeapp.com/</a></p>
+                    </div>
+                    <p>「Download for Windows」ボタンをクリックしてインストーラーをダウンロードします。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 2: インストーラーの実行</h3>
+                    <p>ダウンロードしたインストーラー（SourceTreeSetup.exe）を実行します。</p>
+                    <p>インストーラーが起動し、自動的にユーザーフォルダ（C:\Users\ユーザー名\AppData\Local）にインストールが開始されます。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 3: Bitbucket設定のスキップ</h3>
+                    <p>Bitbucketアカウントの設定画面が表示されます。</p>
+                    <div class="info-box">
+                        <p><strong>スキップ推奨:</strong> Bitbucketを使用しない場合は、「スキップ」ボタンをクリックして次に進んでください。</p>
+                    </div>
+                    <p>この設定は後からでも変更できるため、今回はスキップして構いません。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 4: Mercurial設定</h3>
+                    <p>Mercurialバージョン管理システムの設定画面が表示されます。</p>
+                    <div class="highlight-box">
+                        <p><strong>設定内容:</strong></p>
+                        <ul>
+                            <li><strong>Mercurialのチェックボックス:</strong> 「オフ」にする</li>
+                            <li>一般的にはGitのみを使用するため、Mercurialは不要です</li>
+                        </ul>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>推奨:</strong> Mercurialを使用しない場合は、チェックボックスをオフにしてください。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 5: バージョン管理システムの設定</h3>
+                    <p>SourceTreeで使用するバージョン管理システムを選択する画面が表示されます。</p>
+                    <div class="highlight-box">
+                        <p><strong>設定内容:</strong></p>
+                        <ul>
+                            <li><strong>Git:</strong> チェックボックスを「オン」にする（推奨）</li>
+                            <li><strong>Mercurial:</strong> チェックボックスを「オフ」のままにする</li>
+                        </ul>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>推奨:</strong> 一般的にはGitのみを使用するため、Gitのチェックボックスのみをオンにしてください。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 6: ユーザー情報の設定</h3>
+                    <p>Gitで使用するユーザー情報を設定します：</p>
+                    <ul>
+                        <li><strong>フルネーム:</strong> コミット時に表示される名前</li>
+                        <li><strong>メールアドレス:</strong> コミット時に記録されるメールアドレス</li>
+                    </ul>
+                    <div class="warning-box">
+                        <p><strong>注意:</strong> ここで設定した情報は全てのコミットに記録されるため、正確に入力してください。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 7: SSH キーの設定（オプション）</h3>
+                    <p>SSHキーを使用してリモートリポジトリに接続する場合の設定です。</p>
+                    <ol>
+                        <li>既存のSSHキーがある場合は「既存のキーを使用」を選択</li>
+                        <li>新しくキーを作成する場合は「新しいキーを作成」を選択</li>
+                        <li>HTTPSを使用する場合はスキップ可能</li>
+                    </ol>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 8: インストール完了</h3>
+                    <p>設定が完了すると、SourceTreeのメイン画面が表示されます。</p>
+                    <div class="success-box">
+                        <p><strong>成功!</strong> SourceTreeが正常にインストールされました。これでGitリポジトリの管理をグラフィカルに行うことができます。</p>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h3>💡 インストール後の確認事項</h3>
+                    <ul>
+                        <li>ツール → オプション から各種設定を確認・調整できます</li>
+                        <li>リポジトリのクローンやローカルリポジトリの作成が可能です</li>
+                        <li>ブランチの切り替えやマージなどの操作が視覚的に行えます</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="git-setup" class="content-section">
+                <h2>Git初期設定</h2>
+                <p>Gitの初期設定に関する内容をここに記載します。</p>
+            </div>
+
+            <div id="repository-clone" class="content-section">
+                <h2>リポジトリのクローン</h2>
+                <p>リポジトリのクローン方法に関する内容をここに記載します。</p>
+            </div>
+
+            <div id="branch-management" class="content-section">
+                <h2>ブランチ管理</h2>
+                <p>ブランチ管理に関する内容をここに記載します。</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            // すべてのコンテンツセクションを非表示にする
+            const contentSections = document.querySelectorAll('.content-section');
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // すべてのメニューアイテムから active クラスを削除
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // 選択されたコンテンツを表示
+            document.getElementById(contentId).classList.add('active');
+
+            // 対応するメニューアイテムに active クラスを追加
+            const activeLink = document.querySelector(`a[href="#${contentId}"]`);
+            if (activeLink) {
+                activeLink.parentElement.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

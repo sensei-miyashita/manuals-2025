@@ -1,0 +1,324 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基本設定 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2d5016;
+    background: linear-gradient(135deg, #f0f8ea 0%, #e8f5dc 100%);
+    min-height: 100vh;
+}
+
+/* コンテナ */
+.container {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #a8d5a8 0%, #7cb97c 100%);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+/* サイドバー */
+.sidebar {
+    width: 320px;
+    background: linear-gradient(180deg, #e8f5dc 0%, #ddf0d1 100%);
+    border-right: 1px solid #c8e4bd;
+    padding: 120px 0 2rem 0;
+    overflow-y: auto;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0 1rem;
+}
+
+.menu-item {
+    margin-bottom: 0.5rem;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: #2d5016;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 2px solid transparent;
+}
+
+.menu-item a:hover {
+    background: rgba(168, 213, 168, 0.3);
+    border-color: #a8d5a8;
+    transform: translateX(5px);
+}
+
+.menu-item.active a {
+    background: linear-gradient(135deg, #a8d5a8 0%, #94c794 100%);
+    color: white;
+    border-color: #7cb97c;
+    box-shadow: 0 4px 12px rgba(124, 185, 124, 0.3);
+}
+
+.menu-icon {
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+    width: 24px;
+    text-align: center;
+}
+
+/* メインコンテンツ */
+.content {
+    flex: 1;
+    margin-left: 320px;
+    padding: 140px 2rem 2rem 2rem;
+    background: #fdfefc;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.4s ease-in;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 見出し */
+h2 {
+    color: #2d5016;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #a8d5a8;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #7cb97c;
+}
+
+h3 {
+    color: #4a7028;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+h3::before {
+    content: '▶';
+    color: #a8d5a8;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* ステップカード */
+.step-card {
+    background: white;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    border-left: 5px solid #a8d5a8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 情報ボックス */
+.highlight-box, .warning-box, .info-box, .success-box {
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border-left: 4px solid;
+}
+
+.highlight-box {
+    background: #f8fdf5;
+    border-left-color: #a8d5a8;
+    color: #2d5016;
+}
+
+.warning-box {
+    background: #fff8e1;
+    border-left-color: #ffb74d;
+    color: #e65100;
+}
+
+.info-box {
+    background: #e3f2fd;
+    border-left-color: #42a5f5;
+    color: #1565c0;
+}
+
+.success-box {
+    background: #f1f8e9;
+    border-left-color: #66bb6a;
+    color: #2e7d32;
+}
+
+/* リスト */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    color: #4a7028;
+}
+
+/* リンク */
+a {
+    color: #7cb97c;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.2s ease;
+}
+
+a:hover {
+    border-bottom-color: #7cb97c;
+}
+
+/* Tips セクション */
+.tips-section {
+    background: linear-gradient(135deg, #f8fdf5 0%, #f0f8ea 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e8f5dc;
+    margin-top: 2rem;
+}
+
+.tips-section h3 {
+    color: #4a7028;
+    margin-bottom: 1rem;
+}
+
+/* パラグラフ */
+p {
+    margin-bottom: 1rem;
+    color: #4a7028;
+    line-height: 1.7;
+}
+
+/* 強調テキスト */
+strong {
+    color: #2d5016;
+    font-weight: 600;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1rem 0;
+    }
+    
+    .content {
+        margin-left: 0;
+        padding-top: 2rem;
+    }
+    
+    header {
+        position: relative;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+    
+    .step-card {
+        padding: 1.2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    .menu-item a {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f8ea;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a8d5a8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7cb97c;
+}
