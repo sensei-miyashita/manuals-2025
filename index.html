@@ -151,7 +151,86 @@
 
             <div id="git-setup" class="content-section">
                 <h2>Git初期設定</h2>
-                <p>Gitの初期設定に関する内容をここに記載します。</p>
+                <p>Gitを使用する前に、ユーザー情報の設定が必要です。特にGitHubを使用する場合は、プライバシーを保護するためにnoreplyアドレスの使用を推奨します。</p>
+                
+                <div class="step-card">
+                    <h3>Step 1: GitHubのプロフィールメニューにアクセス</h3>
+                    <p>GitHubにログインし、右上のプロフィール画像をクリックしてメニューを開きます。</p>
+                    <div class="image-container">
+                        <img src="images/GitHubMenu.png" alt="GitHubプロフィールメニュー" class="step-image">
+                    </div>
+                    <p>メニューから「Settings」を選択します。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 2: Emails設定ページへ移動</h3>
+                    <p>設定ページの左側メニューから「Emails」を選択します。</p>
+                    <div class="image-container">
+                        <img src="images/GitHubSettings-Emails.png" alt="GitHub Emails設定ページ" class="step-image">
+                    </div>
+                    <p>このページでメールアドレスの設定とプライバシー設定を行います。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 3: noreplyアドレスの確認</h3>
+                    <p>「Keep my email addresses private」のチェックボックスをオンにします。</p>
+                    <div class="image-container">
+                        <img src="images/Keep-my-email-address-private.png" alt="プライベートメール設定" class="step-image">
+                    </div>
+                    <div class="highlight-box">
+                        <p><strong>noreplyアドレス:</strong> チェックボックスをオンにすると、下部に以下の形式のnoreplyアドレスが表示されます：</p>
+                        <code>123456789+username@users.noreply.github.com</code>
+                    </div>
+                    <div class="info-box">
+                        <p><strong>重要:</strong> このnoreplyアドレスをコピーして、Gitの設定で使用します。これにより、コミット履歴に実際のメールアドレスが公開されることを防げます。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 4: SourceTreeでのユーザー情報設定</h3>
+                    <p>SourceTreeを開き、メニューバーから「ツール」→「オプション」を選択します。</p>
+                    <div class="image-container">
+                        <img src="images/sourcetree-menu.png" alt="SourceTreeメニュー" class="step-image">
+                    </div>
+                    <p>オプション画面が開いたら、「全般」タブでユーザー情報を設定します。</p>
+                    <div class="image-container">
+                        <img src="images/sourcetree-settings.png" alt="SourceTree設定画面" class="step-image">
+                    </div>
+                    <div class="highlight-box">
+                        <p><strong>設定内容:</strong></p>
+                        <ul>
+                            <li><strong>作者の名前:</strong> GitHubのユーザー名または実名</li>
+                            <li><strong>作者のメールアドレス:</strong> Step 3で確認したnoreplyアドレス</li>
+                        </ul>
+                    </div>
+                    <div class="warning-box">
+                        <p><strong>注意:</strong> 既にコミットを行っている場合、過去のコミットのメールアドレスは変更されません。新しい設定は今後のコミットから適用されます。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 5: コマンドラインでの設定（参考）</h3>
+                    <p>コマンドラインでGitを使用する場合は、以下のコマンドで設定できます：</p>
+                    <div class="highlight-box">
+                        <pre><code>git config --global user.name "あなたの名前"
+git config --global user.email "123456789+username@users.noreply.github.com"</code></pre>
+                    </div>
+                    <p>設定を確認するには以下のコマンドを使用します：</p>
+                    <div class="highlight-box">
+                        <pre><code>git config --global user.name
+git config --global user.email</code></pre>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h3>💡 Git設定のベストプラクティス</h3>
+                    <ul>
+                        <li><strong>プライバシー保護:</strong> noreplyアドレスを使用してメールアドレスを非公開に</li>
+                        <li><strong>一貫性:</strong> 全てのプロジェクトで同じユーザー情報を使用</li>
+                        <li><strong>確認:</strong> 設定後は実際にコミットして、正しく表示されるか確認</li>
+                        <li><strong>チーム開発:</strong> チーム内でのコミット履歴の可読性を考慮した名前設定</li>
+                    </ul>
+                </div>
             </div>
 
             <div id="repository-clone" class="content-section">
