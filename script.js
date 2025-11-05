@@ -20,6 +20,9 @@ function showContent(contentId) {
         activeLink.parentElement.classList.add('active');
     }
 
+    // モバイルメニューを閉じる
+    closeMobileMenu();
+
     // スクロールリセットを少し遅延して実行
     setTimeout(() => {
         window.scrollTo(0, 0);
@@ -31,4 +34,24 @@ function showContent(contentId) {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }, 10);
+}
+
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    toggle.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    toggle.classList.remove('active');
 }

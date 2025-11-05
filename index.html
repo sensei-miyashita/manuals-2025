@@ -9,11 +9,20 @@
 <body>
     <div class="container">
         <header>
-            <h1>開発ツールマニュアル</h1>
-            <p>開発に必要なツールのインストールと設定方法をご紹介します</p>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>開発ツールマニュアル</h1>
+                    <p>開発に必要なツールのインストールと設定方法をご紹介します</p>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </header>
 
-        <nav class="sidebar">
+        <nav class="sidebar" id="sidebar">
             <ul class="menu">
                 <li class="menu-item active">
                     <a href="#sourcetree-install" onclick="showContent('sourcetree-install')">
@@ -41,6 +50,8 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 
         <main class="content">
             <div id="sourcetree-install" class="content-section active">
