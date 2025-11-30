@@ -468,8 +468,8 @@ git config --global user.email</code></pre>
                 </div>
 
                 <div class="step-card">
-                    <h3>Step 6: 接続テスト（任意）</h3>
-                    <p>正しく設定できたか確認するため、接続テストを行うことができます。</p>
+                    <h3>Step 6: 接続テスト</h3>
+                    <p>正しく設定できたか確認するため、接続テストを必ず行ってください。</p>
                     
                     <div class="highlight-box">
                         <p><strong>コマンドプロンプトまたはターミナルで実行：</strong></p>
@@ -480,6 +480,79 @@ git config --global user.email</code></pre>
                         <p>成功すると、次のようなメッセージが表示されます：</p>
                         <pre><code>Hi sensei-miyashita! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
                     </div>
+                    
+                    <div class="warning-box">
+                        <p><strong>⚠️ 重要:</strong> このテストで正常に接続できることを必ず確認してください。エラーが出る場合は、SSHキーの登録やファイルのパスを見直してください。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 7: SourceTreeでのSSH設定</h3>
+                    <p>SourceTreeでもSSHキーを使えるように設定します。</p>
+                    
+                    <h4>1. オプション画面を開く</h4>
+                    <p>SourceTreeのメニューバーから<strong>「ツール」→「オプション」</strong>を選択します。</p>
+                    
+                    <h4>2. 全般タブを開く</h4>
+                    <p>オプション画面で<strong>「全般」</strong>タブを選択します。</p>
+                    
+                    <h4>3. SSHキーとSSHクライアントを設定</h4>
+                    <div class="image-container">
+                        <img src="images/sourcetree_private_key.png" alt="SourceTree SSH設定画面" class="step-image">
+                    </div>
+                    <div class="highlight-box">
+                        <p><strong>SSHキー:</strong> 先ほど作成した秘密鍵を指定します。</p>
+                        <p>秘密鍵は<code>ssh-keygen</code>コマンドで作成した際に、一般的に以下のディレクトリに保存されています：</p>
+                        <pre><code>%USERPROFILE%\.ssh\id_ed25519</code></pre>
+                        <p>具体的なパス例：</p>
+                        <pre><code>C:\Users\[ユーザー名]\.ssh\id_ed25519</code></pre>
+                        <p><small>※ <code>.ssh</code>は隠しディレクトリなので、エクスプローラーで隠しファイル・フォルダーを表示する設定にしておく必要があります。</small></p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p><strong>SSHクライアント:</strong> <strong>OpenSSH</strong>を選択してください。</p>
+                        <p>ドロップダウンメニューから「OpenSSH」を選択します。</p>
+                    </div>
+                    
+                    <p>設定が完了したら、<strong>「OK」</strong>ボタンを押して設定を保存します。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 8: SourceTreeでの接続テスト</h3>
+                    <p>SourceTreeのSSH設定が正しくできているか、接続テストを行います。</p>
+                    
+                    <h4>1. フェッチボタンを押す</h4>
+                    <p>SourceTreeのツールバーにある<strong>「フェッチ」</strong>ボタンをクリックします。</p>
+                    <div class="image-container">
+                        <img src="images/sourcetree_buttons.png" alt="SourceTreeツールバー" class="step-image">
+                    </div>
+                    
+                    <h4>2. フェッチダイアログでOKを押す</h4>
+                    <p>フェッチダイアログが開いたら、<strong>「OK」</strong>ボタンを押します。</p>
+                    <div class="image-container">
+                        <img src="images/sourcetree_fetch_dialog.png" alt="SourceTreeフェッチダイアログ" class="step-image">
+                    </div>
+                    <div class="info-box">
+                        <p><strong>チェックボックスについて:</strong></p>
+                        <p>チェックボックスの設定は任意ですが、現時点では一番上の項目にチェックが入っていれば問題ありません。</p>
+                    </div>
+                    
+                    <h4>3. エラーの有無を確認</h4>
+                    <div class="success-box">
+                        <p><strong>成功:</strong> エラーが出なければ、SSH設定が正しく完了しています。</p>
+                    </div>
+                    <div class="warning-box">
+                        <p><strong>⚠️ エラーが出た場合:</strong></p>
+                        <ul>
+                            <li>SSHキーのパスが正しく設定されているか確認してください。</li>
+                            <li>SSHクライアントが「OpenSSH」に設定されているか確認してください。</li>
+                            <li>Step 6のコマンドプロンプトでの接続テストが成功しているか確認してください。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="success-box">
+                        <p><strong>完了!</strong> これでSourceTreeからもSSH接続でGitHubにアクセスできるようになりました。</p>
+                    </div>
                 </div>
 
                 <div class="tips-section">
@@ -489,6 +562,7 @@ git config --global user.email</code></pre>
                         <li><strong>複数のパソコンで使う場合:</strong> パソコンごとに別々のSSH鍵ペアを作成して、それぞれGitHubに登録することを推奨します。</li>
                         <li><strong>鍵の管理:</strong> パソコンを買い替えたり、使わなくなったパソコンのSSHキーは、GitHubの設定から削除しておきましょう。</li>
                         <li><strong>パスフレーズ:</strong> より高いセキュリティが必要な場合は、パスフレーズを設定してSSH-Agentで管理することを検討してください。</li>
+                        <li><strong>SourceTreeの設定:</strong> SSH鍵のパスやSSHクライアントの設定を間違えると、GitHubに接続できなくなります。設定内容を正確に入力してください。</li>
                     </ul>
                 </div>
             </div>
