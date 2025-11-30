@@ -654,6 +654,22 @@ git config --global user.email</code></pre>
                     </div>
                 </div>
 
+                <div class="warning-box">
+                    <h3>⚠️ SourceTreeのクローンボタンについて</h3>
+                    <p>SourceTreeにも「クローン」ボタンがありますが、<strong>コマンドラインでのクローンを推奨します</strong>。</p>
+                    <p><strong>理由:</strong> SourceTreeからクローン先のフォルダーを指定すると、リポジトリ名のフォルダーを作成せずに、指定したフォルダーに直接ファイルが配置されてしまいます。</p>
+                    <div class="highlight-box">
+                        <p><strong>問題の例:</strong></p>
+                        <p>例えば、クローン先に<code>source\repos</code>を指定すると：</p>
+                        <ul>
+                            <li><strong>期待される結果:</strong> <code>source\repos\my-first-project\</code>が作られる</li>
+                            <li><strong>実際の結果:</strong> <code>source\repos\</code>直下にリポジトリの内容が全てダウンロードされる</li>
+                        </ul>
+                        <p>この場合、元々<code>source\repos</code>にあったファイルとクローンで取得したファイルが混在してしまい、区別できなくなってしまいます。</p>
+                    </div>
+                    <p><strong>対策:</strong> <code>git clone</code>コマンドを使えば、自動的にリポジトリ名のフォルダーが作成されるため、この問題を避けられます。</p>
+                </div>
+
                 <div class="tips-section">
                     <h3>💡 参考：世界中のリポジトリを探索しよう</h3>
                     <p>GitHubでは、世界中の様々な開発者が公開しているリポジトリを取得できます。同様の手順で、有名なプロダクトのソースコードをクローンして閲覧することができます。</p>
