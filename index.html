@@ -43,6 +43,11 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="#ssh-key-setup" onclick="showContent('ssh-key-setup')">
+                        <span class="menu-icon">🔑</span>
+                        SSHキーの登録
+                    </a>
+                </li>
                 <li class="menu-item">
                     <a href="#repository-clone" onclick="showContent('repository-clone')">
                         <span class="menu-icon">📥</span>
@@ -333,6 +338,157 @@ git config --global user.email</code></pre>
                         <li><strong>READMEは推奨:</strong> プロジェクトの説明を書く場所として非常に重要です。</li>
                         <li><strong>.gitignoreでVisualStudioを選択:</strong> 不要なファイルをGitで管理しないようにできます。</li>
                         <li><strong>リポジトリ名は慎重に:</strong> 後から変更も可能ですが、最初からわかりやすい名前を付けておくと管理が楽になります。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="ssh-key-setup" class="content-section">
+                <h2>SSHキーの登録</h2>
+                
+                <div class="info-box">
+                    <h3>🔐 暗号化通信とSSHについて</h3>
+                    <p>GitHubのPrivate（非公開）リポジトリにアクセスするには、<strong>SSH（Secure Shell）</strong>という暗号化通信の仕組みが必要です。SSHを使うことで、インターネット上で安全にデータをやり取りできます。</p>
+                    <p>この仕組みを使うために、<strong>SSHキー</strong>をGitHubに登録する必要があります。</p>
+                </div>
+
+                <div class="step-card">
+                    <h3>SSHの公開鍵と秘密鍵とは？</h3>
+                    <div class="highlight-box">
+                        <p>SSHでは、<strong>公開鍵</strong>と<strong>秘密鍵</strong>という2つの鍵を使います。これは次のようにたとえられます：</p>
+                        <ul>
+                            <li><strong>公開鍵：</strong> 厳重な鍵がかけられた扉</li>
+                            <li><strong>秘密鍵：</strong> その扉に出入りするための鍵</li>
+                        </ul>
+                        <p>公開鍵（扉）はGitHubに登録して公開します。秘密鍵（鍵）は自分のパソコンに保管し、誰にも見せてはいけません。</p>
+                        <p>秘密鍵を持っている人だけが、公開鍵で守られた扉（GitHubのリポジトリ）にアクセスできる仕組みです。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 1: SSH鍵ペアの作成</h3>
+                    <p><code>ssh-keygen</code>コマンドを使って、公開鍵と秘密鍵のペアを作成します。</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>コマンドプロンプトまたはターミナルで実行：</strong></p>
+                        <pre><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></pre>
+                        <p><small>※ メールアドレス部分は、GitHubに登録しているメールアドレス（または学校のメールアドレス）に置き換えてください。</small></p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>実行中の質問について：</strong></p>
+                        <ul>
+                            <li><strong>Enter file in which to save the key:</strong> そのままEnterキーを押してください（デフォルトの保存場所が使用されます）。</li>
+                            <li><strong>Enter passphrase (empty for no passphrase):</strong> そのままEnterキーを押してください（パスフレーズなし）。</li>
+                            <li><strong>Enter same passphrase again:</strong> もう一度Enterキーを押してください。</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ パスフレーズについて</strong></p>
+                        <p>今回は簡単に扱うためにパスフレーズの入力を省略していますが、<strong>本来はパスフレーズを設定してセキュリティを高めるべきです</strong>。パスフレーズを設定する場合は、SSH-Agentという仕組みを使って管理する必要がありますが、説明が長くなるため今回は割愛します。</p>
+                    </div>
+
+                    <div class="success-box">
+                        <p><strong>完了!</strong> 公開鍵と秘密鍵が作成されました。</p>
+                        <ul>
+                            <li>公開鍵: <code>~/.ssh/id_ed25519.pub</code></li>
+                            <li>秘密鍵: <code>~/.ssh/id_ed25519</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 2: 公開鍵の内容をコピー</h3>
+                    <p>作成した公開鍵の内容を表示してコピーします。</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Windows（コマンドプロンプト）の場合：</strong></p>
+                        <pre><code>type %USERPROFILE%\.ssh\id_ed25519.pub</code></pre>
+                        
+                        <p><strong>Mac/Linuxの場合：</strong></p>
+                        <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+                        
+                        <p>表示された内容（<code>ssh-ed25519</code>で始まる長い文字列）を全てコピーしてください。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 3: GitHubの設定ページを開く</h3>
+                    <p>GitHubにログインし、右上のプロフィールメニューから<strong>「Settings」</strong>を選択します。</p>
+                    <div class="image-container">
+                        <img src="images/GitHubMenu.png" alt="GitHubプロフィールメニュー" class="step-image">
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 4: SSH and GPG keysページを開く</h3>
+                    <p>設定ページの左側メニューから<strong>「SSH and GPG keys」</strong>を選択します。</p>
+                    <div class="image-container">
+                        <img src="images/GitHub_menu_SSH.png" alt="GitHub SSH and GPG keysメニュー" class="step-image">
+                    </div>
+                    <p>ページ右上にある緑色の<strong>「New SSH key」</strong>ボタンをクリックして、SSHキー追加画面を開きます。</p>
+                    <div class="image-container">
+                        <img src="images/GitHub_new_ssh_key_button.png" alt="GitHub New SSH keyボタン" class="step-image">
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 5: SSHキーの登録</h3>
+                    <p>SSHキー追加画面で必要な情報を入力します。</p>
+                    <div class="image-container">
+                        <img src="images/GitHub_add_new_ssh_key.png" alt="GitHub SSHキー追加画面" class="step-image">
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Title:</strong> このSSHキーを識別するための名前を入力します。
+                                <ul>
+                                    <li>推奨例: 「School Laptop」「Personal Desktop」「MacBook Pro」など、使用しているパソコンを識別できる名前</li>
+                                </ul>
+                            </li>
+                            <li><strong>Key type:</strong> <strong>「Authentication Key」</strong>を選択してください。
+                                <ul>
+                                    <li>Authentication Key: リポジトリへのアクセス認証に使用（通常はこれを選択）</li>
+                                    <li>Signing Key: コミットの署名に使用（高度な用途）</li>
+                                </ul>
+                            </li>
+                            <li><strong>Key:</strong> Step 2でコピーした公開鍵の内容を貼り付けます。
+                                <ul>
+                                    <li><code>ssh-ed25519</code>で始まる長い文字列全体を貼り付けてください</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p>すべて入力したら、<strong>「Add SSH key」</strong>ボタンをクリックします。</p>
+
+                    <div class="success-box">
+                        <p><strong>完了!</strong> SSHキーがGitHubに登録されました。これでPrivateリポジトリに安全にアクセスできるようになります。</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3>Step 6: 接続テスト（任意）</h3>
+                    <p>正しく設定できたか確認するため、接続テストを行うことができます。</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>コマンドプロンプトまたはターミナルで実行：</strong></p>
+                        <pre><code>ssh -T git@github.com</code></pre>
+                        
+                        <p>初回接続時は「Are you sure you want to continue connecting?」と聞かれるので、<code>yes</code>と入力してEnterキーを押してください。</p>
+                        
+                        <p>成功すると、次のようなメッセージが表示されます：</p>
+                        <pre><code>Hi sensei-miyashita! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h3>💡 重要なポイント</h3>
+                    <ul>
+                        <li><strong>秘密鍵は絶対に他人に見せない:</strong> 秘密鍵（<code>id_ed25519</code>）は誰にも見せてはいけません。GitHubに登録するのは公開鍵（<code>id_ed25519.pub</code>）のみです。</li>
+                        <li><strong>複数のパソコンで使う場合:</strong> パソコンごとに別々のSSH鍵ペアを作成して、それぞれGitHubに登録することを推奨します。</li>
+                        <li><strong>鍵の管理:</strong> パソコンを買い替えたり、使わなくなったパソコンのSSHキーは、GitHubの設定から削除しておきましょう。</li>
+                        <li><strong>パスフレーズ:</strong> より高いセキュリティが必要な場合は、パスフレーズを設定してSSH-Agentで管理することを検討してください。</li>
                     </ul>
                 </div>
             </div>
